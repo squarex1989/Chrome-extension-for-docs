@@ -1,6 +1,6 @@
 # Chrome Extension for Docs
 
-A Zoom Docs browser extension demo that provides AI-powered document search and response generation for customer support scenarios.
+A Docs browser extension demo that provides AI-powered document search and response generation for customer support scenarios.
 
 ## Features
 
