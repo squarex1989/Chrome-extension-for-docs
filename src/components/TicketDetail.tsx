@@ -236,7 +236,7 @@ const TicketDetail = ({ ticket, replyContent, onReplyChange, onSendReply, replyS
       </div>
 
       {/* Right Sidebar - User Info Panel */}
-      <div className="hidden xl:block xl:w-56 2xl:w-64 flex-shrink-0 border-l border-gray-200 bg-white overflow-y-auto">
+      <div className="w-64 border-l border-gray-200 bg-white overflow-y-auto">
         {/* User Card */}
         <div className="p-4 border-b border-gray-100">
           <div className="flex flex-col items-center">

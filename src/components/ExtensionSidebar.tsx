@@ -63,7 +63,7 @@ const ExtensionSidebar = ({
     <>
       {/* Sidebar */}
       <div
-        className={`fixed right-0 top-0 h-full w-full sm:w-[340px] lg:w-[380px] bg-white border-l border-gray-200 shadow-xl flex flex-col transition-transform duration-300 z-50 ${
+        className={`fixed right-0 top-0 h-full w-[380px] bg-white border-l border-gray-200 shadow-xl flex flex-col transition-transform duration-300 z-50 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

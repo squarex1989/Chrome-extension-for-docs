@@ -7,7 +7,6 @@ import ExtensionSidebar from './ExtensionSidebar';
 const ExtensionDemo = () => {
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [aiAnswer, setAiAnswer] = useState<AIAnswer | null>(null);
@@ -22,7 +21,6 @@ const ExtensionDemo = () => {
     setReplyContent('');
     setSentMessage('');
     setReplySent(false);
-    setIsLeftSidebarOpen(false);
     setSearchQuery(ticket.query);
     handleSearch(ticket.query);
   };
@@ -73,19 +71,10 @@ const ExtensionDemo = () => {
   }, [searchQuery]);
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden bg-[#1a1a2e]">
+    <div className="h-full flex flex-col overflow-hidden bg-[#1a1a2e]">
       {/* Zendesk-like Header */}
       <div className="h-12 bg-[#1a1a2e] border-b border-gray-700 flex items-center justify-between px-4">
         <div className="flex items-center gap-4">
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden text-gray-400 hover:text-white"
-            onClick={() => setIsLeftSidebarOpen(!isLeftSidebarOpen)}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center">
@@ -131,23 +120,9 @@ const ExtensionDemo = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden relative">
-        {/* Mobile backdrop for left sidebar */}
-        {isLeftSidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black/30 z-30 md:hidden"
-            onClick={() => setIsLeftSidebarOpen(false)}
-          />
-        )}
-
+      <div className="flex-1 flex overflow-hidden">
         {/* Left Sidebar - Visitor List */}
-        <div className={`
-          fixed md:relative inset-y-0 left-0 z-40 md:z-auto
-          w-72 md:w-48 lg:w-60 xl:w-72
-          bg-white border-r border-gray-200 flex flex-col flex-shrink-0
-          transform transition-transform duration-300 md:translate-x-0
-          ${isLeftSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-        `}>
+        <div className="w-72 bg-white border-r border-gray-200 flex flex-col">
           {/* Tabs */}
           <div className="flex border-b border-gray-200">
             <button className="flex-1 px-4 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600 bg-blue-50/50">
@@ -169,7 +144,7 @@ const ExtensionDemo = () => {
         </div>
 
         {/* Center - Chat Area */}
-        <div className={`flex-1 flex flex-col bg-gray-50 transition-all duration-300 min-w-0 ${isSidebarOpen ? 'xl:mr-[380px]' : ''}`}>
+        <div className={`flex-1 flex flex-col bg-gray-50 transition-all duration-300 ${isSidebarOpen ? 'mr-[380px]' : ''}`}>
           {selectedTicket ? (
             <TicketDetail
               ticket={selectedTicket}
